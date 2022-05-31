@@ -9,30 +9,32 @@ class Book {
 
 class UI {
   static displayBooks () {
-    // const StoredBooks = [
-    //   {
-    //     title : "book one",
-    //     author : 'xxx',
-    //   },
-    //   {
-    //     title : "book one",
-    //     author : 'xxx',
-    //   },
-    // ];
+    
     const books =Store.getBooks();
-    books.forEach ((book) => UI.addBookToList(book));
   }
  static addBookToList(book) {
    const list = document.querySelector('.table');
    const row = document.createElement('tr');
-   row.innerHTML = 
-   "<td>${book.title}</td><td>${book.author}</td><td><a href='#' class='delete'>X</a></td>";
+   const title = document.querySelector('#title');
+   const author = document.querySelector('#author');
+   const tableData = document.createElement('td');
+   tableData.classList.add('titleList');
+   row.appendChild(tableData);
+   tableData.innerHTML = title.value;
+   const tableDataTwo = document.createElement('td');
+   tableDataTwo.classList.add('authorList');
+   row.appendChild(tableDataTwo);
+   tableDataTwo.innerHTML = author.value;
+   const tableDataThree = document.createElement('td');
+   tableDataThree.classList.add('delete');
+   row.appendChild(tableDataThree);
+   tableDataThree.innerHTML = 'Remove';
    list.appendChild(row);
  }
 
  static deleteBook(el) {
    if (el.classList.contains('delete')) {
-     el.parentElement.parentElement.remove();
+     el.parentElement.remove();
    }
  }
  static clearFields() {
@@ -57,9 +59,9 @@ static getBooks () {
 static addBook(book)
 {
 const books = Store.getBooks();
-books.push(book);
+// books.push(book);
 
-localStorage.setItem('books', JSON.stringify(book));
+localStorage.setItem('books', JSON.stringify(books));
 }
 }
 
@@ -69,11 +71,6 @@ document.addEventListener('DOMContentloaded', UI.displayBooks());
 document.querySelector('#book-form').addEventListener('submit', (e) => {
   //Prevent actual submit
   e.preventDefault();
-
-  //get form values
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-
   //Instatiate book
   const book = new Book (title, author);
   //Add book to UI
