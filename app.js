@@ -26,15 +26,17 @@ class UI {
    row.appendChild(tableDataTwo);
    tableDataTwo.innerHTML = author.value;
    const tableDataThree = document.createElement('td');
-   tableDataThree.classList.add('delete');
    row.appendChild(tableDataThree);
-   tableDataThree.innerHTML = 'Remove';
+   const tdBtn = document.createElement('button');
+   tdBtn.classList.add('delete');
+   tdBtn.innerHTML = "Remove"
+   tableDataThree.appendChild(tdBtn);
    list.appendChild(row);
  }
 
  static deleteBook(el) {
    if (el.classList.contains('delete')) {
-     el.parentElement.remove();
+     el.parentElement.parentElement.remove();
    }
  }
  static clearFields() {
