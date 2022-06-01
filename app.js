@@ -1,37 +1,40 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-classes per file */
+
 class Book {
-  constructor (title, author) {
+  constructor(title, author) {
     this.title = title;
     this.author = author;
   }
 }
 
-//Handle UI task
+// Handle UI task
 
 class UI {
-  static displayBooks () {
-    
-    const books =Store.getBooks();
+  static displayBooks() {
+    const books = Store.getBooks();
   }
  static addBookToList(book) {
-   const list = document.querySelector('.table');
-   const row = document.createElement('tr');
-   const title = document.querySelector('#title');
-   const author = document.querySelector('#author');
-   const tableData = document.createElement('td');
-   tableData.classList.add('titleList');
-   row.appendChild(tableData);
-   tableData.innerHTML = title.value;
-   const tableDataTwo = document.createElement('td');
-   tableDataTwo.classList.add('authorList');
-   row.appendChild(tableDataTwo);
-   tableDataTwo.innerHTML = author.value;
-   const tableDataThree = document.createElement('td');
-   row.appendChild(tableDataThree);
-   const tdBtn = document.createElement('button');
-   tdBtn.classList.add('delete');
-   tdBtn.innerHTML = "Remove"
-   tableDataThree.appendChild(tdBtn);
-   list.appendChild(row);
+    const list = document.querySelector('.table');
+    const row = document.createElement('tr');
+    const title = document.querySelector('#title');
+    const author = document.querySelector('#author');
+    const tableData = document.createElement('td');
+    tableData.classList.add('titleList');
+    row.appendChild(tableData);
+    tableData.innerHTML = title.value;
+    const tableDataTwo = document.createElement('td');
+    tableDataTwo.classList.add('authorList');
+    row.appendChild(tableDataTwo);
+    tableDataTwo.innerHTML = author.value;
+    const tableDataThree = document.createElement('td');
+    row.appendChild(tableDataThree);
+    const tdBtn = document.createElement('button');
+    tdBtn.classList.add('delete');
+    tdBtn.innerHTML = 'Remove'
+    tableDataThree.appendChild(tdBtn);
+    list.appendChild(row);
  }
 
  static deleteBook(el) {
