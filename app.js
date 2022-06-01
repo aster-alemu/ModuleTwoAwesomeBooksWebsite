@@ -18,6 +18,7 @@ class UI {
   static displayBooks() {
     const books = Store.getBooks();
   }
+
   static addBookToList(book) {
     const list = document.querySelector('.table');
     const row = document.createElement('tr');
@@ -43,16 +44,16 @@ class UI {
       el.parentElement.parentElement.remove();
     }
   }
+
   static clearFields() {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
-
   }
 }
 
 // Store class: Handle storage
 class Store {
-  static getBooks () {
+  static getBooks() {
     let books;
     if (localStorage.getItem('books') === null) {
       books = [];
@@ -62,6 +63,7 @@ class Store {
     }
     return books;
   }
+
   static addBook(book) {
     const books = Store.getBooks();
     // books.push(book);
@@ -77,7 +79,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   // Prevent actual submit
   e.preventDefault();
   // Instatiate book
-  const book = new Book (title, author);
+  const book = new Book(title, author);
   // Add book to UI
   UI.addBookToList(book);
   // Add book to store
